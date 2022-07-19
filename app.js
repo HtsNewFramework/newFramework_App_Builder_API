@@ -37,7 +37,7 @@ const start = async () => {
   try {
     app.listen(PORT, async (req, res) => {
       // console.log(`Server running on port ${PORT}`);
-      return {msg:"Application up and running"}
+      return { msg: "Application up and running" };
     });
   } catch (err) {
     console.log(err);
