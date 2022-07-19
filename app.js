@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
 var cors = require("cors");
+const path = require("path");
 
 const cardRouter = require("./routes/query/card");
 const fileHistoryRouter = require("./routes/query/fileHistory");
@@ -18,7 +19,9 @@ app.use(cors());
 // Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(__dirname + "../client/build"));
+
+// const publicPath = path.join(__dirname, "..", "public");
+// app.use(express.static(publicPath));
 
 app.set("port", process.env.PORT || 3000);
 
@@ -30,12 +33,11 @@ app.use(fileHistoryRouter);
 // Authentication
 app.use(auth);
 
-
-
 const start = async () => {
   try {
     app.listen(PORT, async (req, res) => {
       // console.log(`Server running on port ${PORT}`);
+      return {msg:"Application up and running"}
     });
   } catch (err) {
     console.log(err);
