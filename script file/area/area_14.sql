@@ -1,0 +1,15 @@
+INSERT INTO _UIX (ID,PRIORITY,CODE,NAME,TYPE,LEVEL,ATTRIBUTE,PARENT,APPLICATION,LAYOUT,STEPPER,[SCHEMA])
+VALUES 	(6001,6001,'TENDER_CATEGORY','Tender Category','PAGE', 9,'{"description":"Create Tender Categories"}','[4001]','[601]','[581]','[7006]','[516]'),
+(6002,6002,'CITY','City','PAGE', 9,'{"description":"Create Cities"}','[4001]','[601]','[581]','[7006]','[516]'),
+(6003,6003,'VENDOR_CATEGORY','Vendor Category','PAGE', 9,'{"description":"Create Vendor Categories"}','[4001]','[601]','[581]','[7006]','[516]'),
+(6004,6004,'VENDOR','Vendor','PAGE', 9,'{"description":"Create Vendors"}','[4001]','[601]','[581]','[7006]','[516]'),
+(6005,6005,'UNIT','Unit','PAGE', 9,'{"description":"Create units of measurement"}','[4001]','[601]','[581]','[7006]','[516]'),
+(6006,6006,'ITEM','Item','PAGE', 9,'{"description":"Create Items"}','[4001]','[601]','[581]','[7006]','[516]'),
+(6007,6007,'ROLE_TENDER','Role to Tender Category','PAGE', 9,'{"description":"Map Roles to Tender Categories"}','[4002]','[601]','[581]','[7006]','[516]'),
+(6008,6008,'TENDER','Tender','PAGE', 9,'{"description":"Create new Tenders"}','[4004]','[601]','[511]','[7001,7002,7003]','[5010]'),
+(6009,6009,'PERSONAL','Personal Information','PAGE', 9,'{"description":"Update Personal Information"}','[4005]','[602]','[581]','[7006]','[516]'),
+(6010,6010,'REFERENCES','References','PAGE', 9,'{"description":"Update Reference Information"}','[4005]','[602]','[581]','[7006]','[516]'),
+(6011,6011,'UPLOADS','Uploads','PAGE', 9,'{"description":"Upload Required Documentation"}','[4005]','[602]','[581]','[7006]','[516]'),
+(6012,6012,'PR','Purchase Requisition','PAGE', 9,'{"description":"Purchase Requisition"}','[4011]','[603]','[511]',NULL,'[5001,5002,5003,5004,5005,5006]'),
+(6013,6013,'PO','Purchase Order','PAGE', 9,'{"description":"Purchase Order"}','[4011]','[603]','[511]',NULL,'[5002,5003,5004,5005,5006]'),
+(6014,6014,'ER','Expense Request','PAGE', 9,'{"description":"Expense Request"}','[4011]','[603]','[511]',NULL,'[5007]')

@@ -1,0 +1,7 @@
+{
+    "secret": "hts-newframework-app-builder",
+    "refreshTokenSecret": "hts-newframework-app-builder2",
+    "port": 1433,
+    "tokenLife": 900,
+    "refreshTokenLife": 86400
+}
