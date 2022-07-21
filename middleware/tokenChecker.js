@@ -11,7 +11,7 @@ module.exports = (req, res, next) => {
       if (err) {
         return res
           .status(401)
-          .json({ error: true, message: "Unauthorized access." });
+          .json({ error: true, msg: "Unauthorized access." });
       }
       req.decoded = decoded;
       next();
@@ -21,7 +21,7 @@ module.exports = (req, res, next) => {
     // return an error
     return res.status(403).send({
       error: true,
-      message: "No token provided.",
+      msg: "No token provided.",
     });
   }
 };

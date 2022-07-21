@@ -55,44 +55,13 @@ router.get("/downloadFileScript/:fileID", async (req, res) => {
         dl.on("end", () => console.log("Download Completed"));
         dl.start();
         fs.unlink(`./script file/area/area_${lengthy}.sql`);
+
+        return res.status(200).send({ msg: `${"Downloaded successfully"}` });
       })
       .catch((err) => {
         return res.json({ msg: `${err.message}` });
       });
   });
-});
-
-router.get("/loginUser/:username/:password", async (req, res) => {
-  const username = req.params.username;
-  const password = req.params.password;
-  sql
-    .connect(sql.connect(config))
-    .then(() => {
-      return sql.query(
-        `SELECT * FROM _USER WHERE USERNAME = '${username}' AND PASSWORD = '${password}'`
-      );
-    })
-    .then((result) => {
-      if (result.rowsAffected > 0) {
-        return res.status(200).send({
-          msg: `user successfully logged In`,
-          verify: `SUCCESS`,
-          userDetails: `${JSON.stringify(result.recordset)}`,
-        });
-      } else {
-        return res.status(500).send({
-          msg: `Invalid credentials supplied`,
-          verify: `ERROR`,
-        });
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-      return res.status(500).send({
-        msg: `${err.message} \n Line number ${err.lineNumber}`,
-        verify: `ERROR`,
-      });
-    });
 });
 
 module.exports = router;
