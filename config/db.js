@@ -4,7 +4,7 @@ dotenv.config();
 var config = {
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
-  port: parseInt(process.env.PORT),
+  port: 19706,
   server: process.env.DB_SERVER,
   database: process.env.DB_DATABASE,
   options: {
