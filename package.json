@@ -1,11 +1,19 @@
 {
   "name": "api",
   "version": "0.0.0",
+  "engines": {
+    "node": "14.x"
+  },
   "private": true,
   "scripts": {
     "start": "node app.js",
     "serve": "nodemon app.js"
   },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
   "dependencies": {
     "body-parser": "^1.20.0",
     "cookie-parser": "~1.4.4",
