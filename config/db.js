@@ -8,10 +8,16 @@ var config = {
   server: process.env.DB_SERVER,
   database: process.env.DB_DATABASE,
   options: {
-    trustedConnection: true,
-    encrypt: true,
-    enableArithAbort: true,
+    trustedConnection: false,
+    // encrypt: true,
+    // enableArithAbort: true,
     trustServerCertificate: true,
+  },
+
+  pool: {
+    max: 10,
+    min: 0,
+    idleTimeoutMillis: 30000,
   },
 };
 
