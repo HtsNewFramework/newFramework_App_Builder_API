@@ -9,6 +9,7 @@ const fileHistoryRouter = require("./routes/query/fileHistory");
 
 // Authentication Route
 const auth = require("./routes/authentication/login");
+const router = require("./routes/query/card");
 
 dotenv.config();
 const PORT = process.env.PORT || 1433;
@@ -32,9 +33,13 @@ app.use(auth);
 
 const start = async () => {
   try {
-    app.listen(PORT, async (req, res) => {
-      console.log(`Server running on port ${PORT}`);
-      return { msg: "Application up and running" };
+    app.listen(PORT, async () => {
+      // res.send()
+      router.get("", (req, res) => {
+        res.send({ msg: "Application up and running" });
+      });
+      // console.log(`Server running on port ${PORT}`);
+      // return { msg: "Application up and running" };
     });
   } catch (err) {
     console.log(err);
