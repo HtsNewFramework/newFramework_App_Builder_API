@@ -34,12 +34,9 @@ app.use(auth);
 const start = async () => {
   try {
     app.listen(PORT, async () => {
-      // res.send()
       router.get("", (req, res) => {
         res.send({ msg: "Application up and running" });
       });
-      // console.log(`Server running on port ${PORT}`);
-      // return { msg: "Application up and running" };
     });
   } catch (err) {
     console.log(err);
