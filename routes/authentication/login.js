@@ -19,7 +19,7 @@ router.get("/loginUser/:username/:password", async (req, res) => {
     .connect(sql.connect(config))
     .then(() => {
       return sql.query(
-        `SELECT * FROM _USER WHERE USERNAME = '${username}' AND PASSWORD = '${password}'`
+        `SELECT * FROM _USER WHERE USERNAME = '${username}' `
       );
     })
     .then((result) => {

@@ -37,7 +37,6 @@ router.get("/save_query/:fileContent/:fileUser/:fileType", async (req, res) => {
 
 router.get("/run_query/:runTxt", async (req, res) => {
   let runTxt = req.params.runTxt;
-  console.log(runTxt);
 
   sql
     .connect(sql.connect(config))
