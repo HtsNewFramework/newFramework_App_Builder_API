@@ -13,18 +13,12 @@ router.get("/save_query/:fileContent/:fileUser/:fileType", async (req, res) => {
   let fileUser = req.params.fileUser;
   let fileType = req.params.fileType;
 
+  fileContent = fileContent.replaceAll("'", "''");
+  console.log(fileContent);
+
   sql
     .connect(sql.connect(config))
     .then(() => {
-      // let obj = new Object();
-
-      // obj.myQuery = fileContent;
-
-      // console.log(obj.myQuery);
-
-      // fileContent = JSON.stringify(obj.myQuery);
-      // console.log(fileContent);
-
       let saveTxt = `INSERT INTO _QUERIES (FILE_CONTENT, FILE_TYPE, FILE_USER ) VALUES ('${fileContent}', '${fileType}', '${fileUser}' )`;
 
       return sql.query(saveTxt);
@@ -42,7 +36,9 @@ router.get("/save_query/:fileContent/:fileUser/:fileType", async (req, res) => {
 });
 
 router.get("/run_query/:runTxt", async (req, res) => {
-  const runTxt = req.params.runTxt;
+  let runTxt = req.params.runTxt;
+  console.log(runTxt);
+
   sql
     .connect(sql.connect(config))
     .then(() => {
@@ -64,38 +60,13 @@ router.get("/run_query/:runTxt", async (req, res) => {
     });
 });
 
-
-// router.get("/updateDB/:fileID", async (req, res) => {
-//   const fileID = req.params.fileID;
-//   sql
-//     .connect(sql.connect(config))
-//     .then(() => {
-//       return sql.query(`UPDATE _QUERIES SET FILE_TYPE =  WHERE FILE_ID = ${fileID}`);
-//     })
-//     .then((result) => {
-//       console.log(res)
-//       return res.status(200).send({
-//         msg: `Record successfully updated \n Number of rows affected: ${result.rowsAffected}`,
-//         verify: `SUCCESS`,
-//         queryResult: `${JSON.stringify(result.recordset)}`,
-//       });
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//       return res.status(500).send({
-//         msg: `${err.message}`,
-//         verify: `ERROR`,
-//       });
-//     });
-// });
-
 router.get("/sql_history/:fileType", async (req, res) => {
   let fileType = req.params.fileType;
   sql
     .connect(sql.connect(config))
     .then(() => {
       return sql.query(
-        `SELECT * FROM _QUERIES WHERE FILE_TYPE = '${fileType}' ORDER BY DATE_CREATED ASC`
+        `SELECT * FROM _QUERIES WHERE FILE_TYPE = '${fileType}' ORDER BY DATE_CREATED DESC`
       );
     })
     .then((result) => {

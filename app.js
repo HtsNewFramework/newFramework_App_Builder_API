@@ -20,9 +20,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// const publicPath = path.join(__dirname, "..", "public");
-// app.use(express.static(publicPath));
-
 app.set("port", process.env.PORT || 3000);
 
 // Route Middleware
