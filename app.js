@@ -57,17 +57,11 @@ app.use(
 
 const start = async () => {
   try {
-    cors_proxy
-      .createServer({
-        originWhitelist: [], // Allow all origins
-        requireHeader: ["origin", "x-requested-with"],
-        removeHeaders: ["cookie", "cookie2"],
-      })
-      .listen(PORT, async () => {
-        router.get("", (req, res) => {
-          res.send({ msg: "Application up and running" });
-        });
+    app.listen(PORT, async () => {
+      router.get("", (req, res) => {
+        res.send({ msg: "Application up and running" });
       });
+    });
   } catch (err) {
     console.log(err);
   }
