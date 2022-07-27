@@ -38,6 +38,12 @@ app.use(auth);
 
 app.use(enforce.HTTPS());
 
+app.use(
+  cors({
+    origin: "*",
+  })
+);
+
 const start = async () => {
   try {
     app.listen(PORT, async () => {
