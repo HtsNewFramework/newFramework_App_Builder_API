@@ -18,7 +18,7 @@ const PORT = process.env.PORT || 1433;
 
 // CORS Middleware
 const corsOptions = {
-	origin: "https://newframework-app-builder.netlify.app/
+	origin: "https://newframework-app-builder.netlify.app/"
 };
 
 
