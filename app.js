@@ -36,7 +36,7 @@ app.use(fileHistoryRouter);
 // Authentication
 app.use(auth);
 
-// app.use(enforce.HTTPS());
+app.use(enforce.HTTPS());
 
 const start = async () => {
   try {
