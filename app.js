@@ -16,14 +16,12 @@ const router = require("./routes/query/card");
 dotenv.config();
 const PORT = process.env.PORT || 1433;
 
-const corsOptions = {
-  origin: "*",
-  credentials: true, //access-control-allow-credentials:true
-  optionSuccessStatus: 200,
-};
-
 // CORS Middleware
-// app.use(cors(corsOptions));
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
 // Middlewares
 app.use(express.json());
@@ -38,11 +36,7 @@ app.use(fileHistoryRouter);
 // Authentication
 app.use(auth);
 
-app.use(
-  cors({
-    origin: "*",
-  })
-);
+// app.use(enforce.HTTPS());
 
 const start = async () => {
   try {
