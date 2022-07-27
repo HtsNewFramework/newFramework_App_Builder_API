@@ -17,11 +17,12 @@ dotenv.config();
 const PORT = process.env.PORT || 1433;
 
 // CORS Middleware
-app.use(
-  cors({
-    origin: "*",
-  })
-);
+const corsOptions = {
+	origin: "https://newframework-app-builder.netlify.app/
+};
+
+
+app.use(cors(corsOptions));
 
 // Middlewares
 app.use(express.json());
