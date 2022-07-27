@@ -16,6 +16,8 @@ const router = require("./routes/query/card");
 dotenv.config();
 const PORT = process.env.PORT || 1433;
 
+app.use(enforce.HTTPS());
+
 // CORS Middleware
 app.use(
   cors({
@@ -35,8 +37,6 @@ app.use(fileHistoryRouter);
 
 // Authentication
 app.use(auth);
-
-app.use(enforce.HTTPS());
 
 const start = async () => {
   try {
