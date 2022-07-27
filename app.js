@@ -17,11 +17,11 @@ dotenv.config();
 const PORT = process.env.PORT || 1433;
 
 // CORS Middleware
-const corsOptions = {
-  origin: "https://newframeworkappbuilder.herokuapp.com",
-};
-
-app.use(cors(corsOptions));
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
 // Middlewares
 app.use(express.json());
