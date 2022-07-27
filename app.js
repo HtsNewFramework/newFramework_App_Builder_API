@@ -6,6 +6,12 @@ var cors = require("cors");
 // var enforce = require("express-sslify");
 // var http = require("http");
 
+app.use(
+  cors({
+    origin: "*",
+  })
+);
+
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
@@ -26,11 +32,6 @@ dotenv.config();
 const PORT = process.env.PORT || 1433;
 
 // CORS Middleware
-app.use(
-  cors({
-    origin: "*",
-  })
-);
 
 // Middlewares
 app.use(express.json());
