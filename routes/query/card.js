@@ -12,6 +12,8 @@ router.get("/save_query/:fileContent/:fileUser/:fileType", async (req, res) => {
   let fileContent = req.params.fileContent;
   let fileUser = req.params.fileUser;
   let fileType = req.params.fileType;
+  
+  console.log(fileUser)
 
   fileContent = fileContent.replaceAll("'", "''");
   // console.log(fileContent);

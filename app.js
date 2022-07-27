@@ -3,6 +3,8 @@ const app = express();
 const dotenv = require("dotenv");
 var cors = require("cors");
 const path = require("path");
+var enforce = require("express-sslify");
+var http = require("http");
 
 const cardRouter = require("./routes/query/card");
 const fileHistoryRouter = require("./routes/query/fileHistory");
@@ -23,13 +25,14 @@ app.use(express.urlencoded({ extended: false }));
 
 app.set("port", process.env.PORT || 3000);
 
-
 // Route Middleware
 app.use(cardRouter);
 app.use(fileHistoryRouter);
 
 // Authentication
 app.use(auth);
+
+app.use(enforce.HTTPS());
 
 const start = async () => {
   try {
