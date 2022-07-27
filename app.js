@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
 var cors = require("cors");
+var cors_proxy = require("cors-anywhere");
 // const path = require("path");
 // var enforce = require("express-sslify");
 // var http = require("http");
@@ -56,11 +57,17 @@ app.use(
 
 const start = async () => {
   try {
-    app.listen(PORT, async () => {
-      router.get("", (req, res) => {
-        res.send({ msg: "Application up and running" });
+    cors_proxy
+      .createServer({
+        originWhitelist: [], // Allow all origins
+        requireHeader: ["origin", "x-requested-with"],
+        removeHeaders: ["cookie", "cookie2"],
+      })
+      .listen(PORT, async () => {
+        router.get("", (req, res) => {
+          res.send({ msg: "Application up and running" });
+        });
       });
-    });
   } catch (err) {
     console.log(err);
   }
