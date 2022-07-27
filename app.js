@@ -2,9 +2,9 @@ const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
 var cors = require("cors");
-const path = require("path");
-var enforce = require("express-sslify");
-var http = require("http");
+// const path = require("path");
+// var enforce = require("express-sslify");
+// var http = require("http");
 
 const cardRouter = require("./routes/query/card");
 const fileHistoryRouter = require("./routes/query/fileHistory");
@@ -36,7 +36,7 @@ app.use(fileHistoryRouter);
 // Authentication
 app.use(auth);
 
-app.use(enforce.HTTPS());
+// app.use(enforce.HTTPS());
 
 app.use(
   cors({
