@@ -16,7 +16,6 @@ router.get("/save_query/:fileContent/:fileUser/:fileType", async (req, res) => {
   console.log(fileUser, fileType);
 
   fileContent = fileContent.replaceAll("'", "''");
-  // console.log(fileContent);
   sql
     .connect(sql.connect(config))
     .then(() => {

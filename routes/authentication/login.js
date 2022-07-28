@@ -4,6 +4,7 @@ const tokenConfig = require("../../config/config.json");
 const config = require("../../config/db");
 const sql = require("mssql");
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 const app = express();
 
 const tokenList = {};
@@ -12,15 +13,23 @@ const tokenList = {};
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+const passwordEncryption = (myPlaintextPassword) => {
+  let encryptedPassword;
+  bcrypt.genSalt(10, function (err, salt) {
+    bcrypt.hash(myPlaintextPassword, salt, function (err, hash) {
+      encryptedPassword = hash;
+    });
+  });
+  return encryptedPassword;
+};
+
 router.get("/loginUser/:username/:password", async (req, res) => {
   const username = req.params.username;
   const password = req.params.password;
   sql
     .connect(sql.connect(config))
     .then(() => {
-      return sql.query(
-        `SELECT * FROM _USER WHERE USERNAME = '${username}' `
-      );
+      return sql.query(`SELECT * FROM _USER WHERE USERNAME = '${username}' `);
     })
     .then((result) => {
       if (result.rowsAffected > 0) {
@@ -49,7 +58,7 @@ router.post("/login", (req, res) => {
   const postData = req.body;
   const user = {
     email: postData.email,
-    password: postData.password,
+    password: passwordEncryption(postData.password),
   };
   // do the database authentication here, with user name and password combination.
   const token = jwt.sign(user, tokenConfig.secret, {
