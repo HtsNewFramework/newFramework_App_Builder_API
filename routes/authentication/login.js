@@ -60,6 +60,8 @@ router.post("/login", (req, res) => {
     email: postData.email,
     password: passwordEncryption(postData.password),
   };
+
+  console.log(user);
   // do the database authentication here, with user name and password combination.
   const token = jwt.sign(user, tokenConfig.secret, {
     expiresIn: tokenConfig.tokenLife,
