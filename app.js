@@ -14,6 +14,11 @@ app.use(
   })
 );
 
+app.use((req, res, next) => {
+  res.setHeader("Cross-Origin-Resource-Policy", "same-site");
+  next();
+});
+
 app.use(
   cors({
     origin: "*",
