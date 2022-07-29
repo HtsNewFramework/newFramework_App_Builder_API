@@ -19,21 +19,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(
-  cors({
-    origin: "*",
-  })
-);
-
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
-
 const cardRouter = require("./routes/query/card");
 const fileHistoryRouter = require("./routes/query/fileHistory");
 
@@ -60,12 +45,6 @@ app.use(fileHistoryRouter);
 app.use(auth);
 
 // app.use(enforce.HTTPS());
-
-app.use(
-  cors({
-    origin: "*",
-  })
-);
 
 const start = async () => {
   try {
