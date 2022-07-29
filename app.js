@@ -60,6 +60,7 @@ const start = async () => {
     app.listen(PORT, async () => {
       router.get("", (req, res) => {
         res.send({ msg: "Application up and running" });
+        console.log(res.body);
       });
     });
   } catch (err) {

@@ -24,7 +24,6 @@ router.get("/save_query/:fileContent/:fileUser/:fileType", async (req, res) => {
       return sql.query(saveTxt);
     })
     .then((result) => {
-      // console.log(result);
       return res.status(200).send({
         msg: `query run successfully \n Number of rows affected: ${result.rowsAffected}`,
         verify: `SUCCESS`,
