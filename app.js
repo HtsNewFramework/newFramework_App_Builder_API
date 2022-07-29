@@ -8,16 +8,7 @@ var cors_proxy = require("cors-anywhere");
 // var enforce = require("express-sslify");
 // var http = require("http");
 
-app.use(
-  helmet({
-    crossOriginEmbedderPolicy: false,
-  })
-);
-
-app.use((req, res, next) => {
-  res.setHeader("Cross-Origin-Resource-Policy", "same-site");
-  next();
-});
+app.use(helmet());
 
 const cardRouter = require("./routes/query/card");
 const fileHistoryRouter = require("./routes/query/fileHistory");
