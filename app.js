@@ -2,10 +2,13 @@ const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
 var cors = require("cors");
+const helmet = require("helmet");
 var cors_proxy = require("cors-anywhere");
 // const path = require("path");
 // var enforce = require("express-sslify");
 // var http = require("http");
+
+app.use(helmet());
 
 app.use(
   cors({
