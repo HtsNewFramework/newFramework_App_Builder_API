@@ -8,7 +8,11 @@ var cors_proxy = require("cors-anywhere");
 // var enforce = require("express-sslify");
 // var http = require("http");
 
-app.use(helmet());
+app.use(
+  helmet({
+    crossOriginEmbedderPolicy: false,
+  })
+);
 
 app.use(
   cors({
