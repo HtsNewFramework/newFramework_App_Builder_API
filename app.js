@@ -8,7 +8,31 @@ var cors_proxy = require("cors-anywhere");
 // var enforce = require("express-sslify");
 // var http = require("http");
 
-app.use(helmet());
+app.use(
+  helmet({
+    crossOriginEmbedderPolicy: false,
+  })
+);
+
+app.use((req, res, next) => {
+  res.setHeader("Cross-Origin-Resource-Policy", "same-site");
+  next();
+});
+
+app.use(
+  cors({
+    origin: "*",
+  })
+);
+
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 
 const cardRouter = require("./routes/query/card");
 const fileHistoryRouter = require("./routes/query/fileHistory");
@@ -36,6 +60,12 @@ app.use(fileHistoryRouter);
 app.use(auth);
 
 // app.use(enforce.HTTPS());
+
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
 const start = async () => {
   try {
