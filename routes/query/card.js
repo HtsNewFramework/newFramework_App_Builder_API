@@ -24,10 +24,19 @@ router.get("/save_query/:fileContent/:fileUser/:fileType", async (req, res) => {
       return sql.query(saveTxt);
     })
     .then((result) => {
-      return res.status(200).send({
-        msg: `query run successfully \n Number of rows affected: ${result.rowsAffected}`,
-        verify: `SUCCESS`,
-      });
+      if (result.rowsAffected > 1) {
+        return res.status(200).send({
+          msg: `query run successfully \n Number of rows affected: ${result.rowsAffected}`,
+          verify: `SUCCESS`,
+        });
+      }
+      else {
+        return res.status(404).send({
+          msg: `query run successfully \n No record found \n ${result.rowsAffected}`,
+          verify: `NO_RECORD`,
+        });
+      }
+
     })
     .catch((err) => {
       return res.status(500).send({ msg: `${err.message}`, verify: `ERROR` });
